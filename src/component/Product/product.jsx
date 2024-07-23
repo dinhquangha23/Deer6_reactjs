@@ -3,6 +3,11 @@ import "./product.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
+
 export default function Product({data}) {
   let fomartMoney = useCallback((x)=>{
     return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -35,20 +40,28 @@ export default function Product({data}) {
       <div className="product-function">
         <ul className="list-function">
           <li className="function-item quick-search">
+          <Tippy content="Search" placement="left">
             <button>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
+            </Tippy>
           </li>
           <li className="function-item wishlist">
+          <Tippy content="Wishlist" placement="left">
             <button>
             <FontAwesomeIcon icon={faHeart} />
             </button>
+            </Tippy>
           </li>
+          <Link to={`/product_detail/${data.id}`}>
           <li className="function-item option">
+            <Tippy content="Cart" placement="left">
             <button>
             <FontAwesomeIcon icon={faCartShopping} />
             </button>
+            </Tippy>
           </li>
+          </Link>
         </ul>
       </div>
     </div>

@@ -1,0 +1,54 @@
+.container .content .bill .table-bill tr td button.close{
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+   }
+   .container .content .bill .table-bill tr td img{
+       width: 80px;
+       height: 80px;
+   }
+   /* phan inpit */
+   .container .content .bill .table-bill tr td .input-quantity{
+       width: 128px;
+       height: 46px;
+       text-align: center;
+       border: 1px solid black;
+       overflow: hidden;
+       border-top-left-radius: 25px;
+       border-bottom-left-radius: 25px;
+       border-top-right-radius: 25px;
+       border-bottom-right-radius: 25px;
+   }
+   .container .content .bill .table-bill tr td .input-quantity input[type="button"]{
+       width: 39px;
+       height: 46px;
+       border: none;
+       
+       background-color: transparent;
+       text-align: center;
+       cursor: pointer;
+   }
+   .container .content .bill .table-bill tr td .input-quantity input.plus{
+       margin-left: -5px;
+   }
+   .container .content .bill .table-bill tr td .input-quantity input.inputnumber{
+       width: 50px;
+       height: 46px;
+       text-align: center;
+       margin-left:-5px;
+       border: none;
+       
+   }
+   .container .content .bill .table-bill tr td .input-quantity input.inputnumber:focus{
+      border: none;
+      outline: none;
+   }
+   
+   .container .content .bill .table-bill tr td .input-quantity input.inputnumber::-webkit-inner-spin-button,
+   .container .content .bill .table-bill tr td .input-quantity input.inputnumber::-webkit-outer-spin-button{
+       -webkit-appearance: none;
+       margin: 0;
+   }

@@ -1,4 +1,4 @@
 import AllProduct from "./AllProduct";
 import ProductDetail from "./ProductDetail"
-
-export{AllProduct, ProductDetail}
+import CartProduct from "./CartProduct";
+export{AllProduct, ProductDetail, CartProduct}

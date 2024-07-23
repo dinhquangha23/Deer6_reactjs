@@ -2,7 +2,6 @@ import { useParams,useNavigate } from "react-router-dom";
 import "./ProductDetail.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 function productDetail() {
-
   const param = useParams();
   const [data, setData] = useState("");
   const [active, setActive] = useState(1);
@@ -37,6 +36,7 @@ function productDetail() {
           };
         });
       });
+      window.scrollTo(0,0);
   }, []);
 
   let fomartMoney = useCallback((x) => {
@@ -79,7 +79,7 @@ function productDetail() {
     if (inputQuantityRef.current.value == "") {
       setQuantity(1);
     }
-    if (quantity < inputQuantityRef.current.max) {
+    else if (quantity < inputQuantityRef.current.max) {
       setQuantity((pre) => pre + 1);
       setDataReciept({
         ...dataReceipt,
@@ -122,7 +122,7 @@ function productDetail() {
           Response.json();
         })
         .then((Response) => {
-         navigator('/all_products')
+        //  navigator('/all_products')
 
         });
     }

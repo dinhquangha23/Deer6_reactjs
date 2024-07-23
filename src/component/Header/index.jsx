@@ -57,10 +57,10 @@ function Header() {
               </a>
             </li>
             <li className="cart">
-              <a href="./cartproduct.html">
+              <Link to={"/cart"}>
               <FontAwesomeIcon icon={faCartShopping} />
                 <span className="cart-number">0</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
