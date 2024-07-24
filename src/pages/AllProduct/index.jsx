@@ -8,7 +8,7 @@ export default function AllProduct() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    let url = `${import.meta.env.VITE_APP_API}product`;
+    let url = `https://sever-bdjv.onrender.com/product`;
     fetch(url)
       .then((Response) => Response.json())
       .then((Response) => {
