@@ -8,7 +8,7 @@ export default function AllProduct() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    let url = "http://localhost:3000/product";
+    let url = `${import.meta.env.VITE_APP_API}product`;
     fetch(url)
       .then((Response) => Response.json())
       .then((Response) => {

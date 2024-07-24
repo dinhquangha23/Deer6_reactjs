@@ -16,14 +16,14 @@ function CartProduct() {
     return result
   }
   useEffect(()=>{
-    let url ="http://localhost:3000/carts"
+    let url =`${import.meta.env.VITE_APP_API}carts`
     fetch(url).then((Response)=>Response.json())
     .then(Response=>{setData(Response)
      setEstimate(calculateEstimate(Response,0))
     })
   },[flagRerenderWhenUpdateQuantity])
 
-  
+  console.log("hello moi ngoi ",import.meta.env.VITE_APP_API)
   useEffect(()=>{
     console.log("haha",data)
     setEstimate(calculateEstimate(data,0))

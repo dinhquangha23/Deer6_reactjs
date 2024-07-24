@@ -22,7 +22,7 @@ function productDetail() {
 
   // console.log(data)
   useEffect(() => {
-    let url = `http://localhost:3000/product/${param.id}`;
+    let url = `${import.meta.env.VITE_APP_API}product/${param.id}`;
     fetch(url)
       .then((Response) => Response.json())
       .then((Response) => {

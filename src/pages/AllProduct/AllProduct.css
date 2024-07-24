@@ -39,6 +39,7 @@
 }
 /* list product */
 .container .list-product{
+    min-height: 60vh;
     min-width: 1230px;
     display: grid;
     grid-template-columns: auto auto auto auto;
