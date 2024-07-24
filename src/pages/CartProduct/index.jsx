@@ -23,9 +23,8 @@ function CartProduct() {
     })
   },[flagRerenderWhenUpdateQuantity])
 
-  console.log("hello moi ngoi ",import.meta.env.VITE_APP_API)
   useEffect(()=>{
-    console.log("haha",data)
+    // console.log("haha ",data)
     setEstimate(calculateEstimate(data,0))
 
   },[flagRerenderWhenUpdateQuantity])
@@ -46,8 +45,8 @@ function CartProduct() {
             <th className="col-estimate">Tạm Tính</th>
           </tr>
           {/* bắt đầu item cart */}
-            {data.map((item ,index)=>{
-              return <CartItem key={index} cartData={item} setFlagRerenderWhenUpdateQuantity={setFlagRerenderWhenUpdateQuantity}/>
+            {data&&data.map((item ,index)=>{
+              return item&&<CartItem key={index} cartData={item} setFlagRerenderWhenUpdateQuantity={setFlagRerenderWhenUpdateQuantity}/>
             })}
               
           {/* kết thúc item cart */}
