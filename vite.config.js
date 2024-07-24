@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     "process.env": process.env,
-    "process.env.VITE_APP_API":import.meta.env.VITE_APP_API
+    "process.env.VITE_APP_API":JSON.stringify(process.env.VITE_APP_API)
   },
 })
