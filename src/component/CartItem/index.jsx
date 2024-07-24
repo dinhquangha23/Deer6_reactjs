@@ -9,8 +9,7 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
     const inputValueRef= useRef();
     useEffect(()=>{
       let timerid = setTimeout(()=>{
-        
-        let url = `http://localhost:3000/carts/${cartData.id}`
+      let url = `${import.meta.env.VITE_APP_API}carts/${cartData.id}`
       let data = {...cartData,quantity:valueInput}
       console.log("data update cart :",data)
       let optionUpdate = {
