@@ -10,7 +10,7 @@ export default function Container() {
   let slideReft = useRef(0);
   let idInterval= useRef(0);
   useEffect(() => {
-    let url = "http://localhost:3000/product?_start=0&_limit=6";
+    let url =`${import.meta.env.VITE_APP_API}product?_start=0&_limit=6`;
     fetch(url)
       .then((Response) => Response.json())
       .then((Response) => {
