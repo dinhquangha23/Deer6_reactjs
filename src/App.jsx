@@ -6,7 +6,7 @@ import {AllProduct, CartProduct, ProductDetail} from "./pages"
 import SearchSide from "./component/SearchSide/SearchSide";
 
 import {Route,Routes} from "react-router-dom"
-import { Fragment, useState } from "react";
+import {useState } from "react";
 function App() {
     const [showSearch,setShowSearch]=useState(false)
     const toggleShowSearch=()=>{

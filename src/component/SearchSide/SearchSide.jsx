@@ -57,7 +57,6 @@ export default function SearchSide({ toggleshow, isShow }) {
           </div>
           <div className="result_content">
             <CartResult />
-            {/* <CartResult />
             <CartResult />
             <CartResult />
             <CartResult />
@@ -71,7 +70,8 @@ export default function SearchSide({ toggleshow, isShow }) {
             <CartResult />
             <CartResult />
             <CartResult />
-            <CartResult /> */}
+            <CartResult />
+            <CartResult />
           </div>
         </div>
       </div>

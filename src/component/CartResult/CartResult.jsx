@@ -11,11 +11,6 @@ export default function CartResult() {
             arrayKeyWord.push(title.slice(possition+key.length));
         }
         arrayKeyWord.push(title)
-<<<<<<< HEAD
-        
-=======
-        console.log("abc")
->>>>>>> 4d6218adfca825434b09b26021ab60185c96c739
         return arrayKeyWord
     }
     let list=getListKeyWord(keyWord,"Quần cargo camo WHOA034")
