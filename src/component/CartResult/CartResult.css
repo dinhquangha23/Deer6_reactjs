@@ -1,0 +1,28 @@
+.result_container{
+    height: 90px;
+    width: 100%;
+    display: flex;
+    margin: 0 0 20px 0;
+    font-family: "Cabin", serif;
+}
+.result_container .result_thumnail{
+    width: 90px;
+    height: 100%;
+    margin: 0 15px 0 0 ;    
+}
+.result_container .result_thumnail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.result_container .result_container_content{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+.result_container .result_container_content .result_content_title{ 
+    margin: 0 0 10px 0;
+}
+.result_container .result_container_content .result_content_title .height_light{
+    color: blue;
+}

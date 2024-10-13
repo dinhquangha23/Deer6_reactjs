@@ -3,18 +3,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./CartItem.css"
 import {MoneytoInt,fomartMoney} from "../../util"
-import { memo } from "react";
+// import { memo } from "react";
 function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
-    let [valueInput,setValueInput]= useState(parseInt(cartData.quantity)||0);
-    let [dataCart,SetDataCart] = useState(cartData)
-    let mount = useRef(false)
+    let [dataCart,SetDataCart] = useState({...cartData})
+    let [valueInput,setValueInput]= useState(parseInt(dataCart.quantity)||0);
+    
     const inputValueRef= useRef();
     console.log({dataCart})
+    
+    
+    
     useEffect(()=>{
-      if(mount.current){
+      
         let timerid = setTimeout(()=>{
-          // let url = `${import.meta.env.VITE_APP_API}carts/${cartData.id}`
-           let url = `http://localhost:3000/carts/${cartData.id}`
+          let url = `${import.meta.env.VITE_APP_API}carts/${cartData.id}`
           console.log("chay ne")
           let data = {...dataCart,quantity:valueInput}
           console.log("data update cart :",data)
@@ -25,24 +27,19 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
           }
           fetch(url,optionUpdate).then((Response)=>Response.json())
           .then((Response)=>{console.log("data mwoi",Response);
-            if(mount.current){
+            
               setFlagRerenderWhenUpdateQuantity((pre)=>!pre)
-            }
+          
             
           })
     
           },300)
 
           return ()=>{
+           
             clearTimeout(timerid)
           }
-      }else{
-        mount.current=true;
-      }
-      
-      
-    
-
+  
     },[valueInput])
     // console.log(cartData)
     let handleInputQuantity =(e)=>{
@@ -88,9 +85,9 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
     return (
     <tr>
         <td> <button className="close"><FontAwesomeIcon icon={faXmark} /></button></td>
-        <td><img src={cartData.thumbnail} alt=""/></td>
-        <td>{`${cartData.title} - ${cartData.size}`}</td>
-        <td>{`${cartData.price&&fomartMoney(cartData.price)} ₫`}</td>
+        <td><img src={dataCart.thumbnail} alt=""/></td>
+        <td>{`${dataCart.title} - ${dataCart.size}`}</td>
+        <td>{`${dataCart.price&&fomartMoney(dataCart.price)} ₫`}</td>
         <td>
             <div className="input-quantity">
                 <input type="button" value="-" className="minus" onClick={handleMinus}/>
@@ -99,8 +96,8 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
             </div>
 
         </td>
-        <td>{fomartMoney(cartData.price*valueInput)} ₫</td>
+        <td>{fomartMoney(dataCart.price*valueInput)} ₫</td>
     </tr>
   );
 }
-export default memo(CartItem);
+export default CartItem;

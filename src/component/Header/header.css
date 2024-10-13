@@ -63,7 +63,7 @@ header .content .funtion .funtion-list{
 header .content .funtion .funtion-list li{
     width: 25%;
     text-align: center;
-    
+    cursor: pointer;
 }
 header .content .funtion .funtion-list li a{
     text-decoration: none;

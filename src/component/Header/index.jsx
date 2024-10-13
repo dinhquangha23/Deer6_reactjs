@@ -2,7 +2,8 @@ import "./header.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCartShopping,faMagnifyingGlass,faUser,faHeart} from'@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom";
-function Header() {
+function Header({toggle}) {
+
   return (
     <header>
       <div className="content">
@@ -42,7 +43,7 @@ function Header() {
         </div>
         <div className="funtion">
           <ul className="funtion-list">
-            <li>
+            <li onClick={toggle}>
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             </li>
             <li>
@@ -65,6 +66,7 @@ function Header() {
           </ul>
         </div>
       </div>
+      
     </header>
   );
 }

@@ -22,7 +22,7 @@ export default function Container() {
     idInterval.current = setInterval(()=>{
       let currentProduct =
       slideReft.current.appendChild(slideReft.current.querySelectorAll(".product")[0])
-    },3000)
+    },8000)
     console.log("id :"+idInterval.current)
     return ()=>{clearInterval(idInterval.current)}
   })
