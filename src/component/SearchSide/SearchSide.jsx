@@ -8,17 +8,20 @@ import { useEffect, useState } from "react";
 import { HashLoader } from "react-spinners";
 export default function SearchSide({ toggleshow, isShow }) {
   const [searchValue,setSearchValue] = useState("");
-  const keyWordCallRequest = useDebounce(searchValue,3000);
+  const keyWordCallRequest = useDebounce(searchValue,1000);
   const [resultSearch,setResultSearch]=useState([]);
   const [isLoading,setIsLoading]=useState(false);
-
   useEffect(()=>{
     if(keyWordCallRequest){
       setIsLoading(true);
-      console.log("call api")
-      setTimeout(() => {
+      let url =`${import.meta.env.VITE_APP_API}search?search=${keyWordCallRequest}`;
+    fetch(url)
+      .then((Response) => Response.json())
+      .then((Response) => {
         setIsLoading(false)
-      }, 5000);
+        setResultSearch(Response);
+        console.log(Response)
+      },[keyWordCallRequest]);
     }
   },[keyWordCallRequest])
   const handelBtnSearch=()=>{
@@ -56,6 +59,8 @@ export default function SearchSide({ toggleshow, isShow }) {
             </button>
           </div>
           <div className="result_content">
+            {resultSearch.map((product)=>{return<CartResult key={product.Title} data={product} keySerach={keyWordCallRequest}/>})}
+            {/* <CartResult />
             <CartResult />
             <CartResult />
             <CartResult />
@@ -70,8 +75,7 @@ export default function SearchSide({ toggleshow, isShow }) {
             <CartResult />
             <CartResult />
             <CartResult />
-            <CartResult />
-            <CartResult />
+            <CartResult /> */}
           </div>
         </div>
       </div>

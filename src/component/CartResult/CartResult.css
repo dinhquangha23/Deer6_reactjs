@@ -25,4 +25,5 @@
 }
 .result_container .result_container_content .result_content_title .height_light{
     color: blue;
+    font-weight: bold;
 }

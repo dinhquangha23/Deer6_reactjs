@@ -10,7 +10,7 @@ export default function Container() {
   let slideReft = useRef(0);
   let idInterval= useRef(0);
   useEffect(() => {
-    let url =`${import.meta.env.VITE_APP_API}product?_start=0&_limit=6`;
+    let url =`${import.meta.env.VITE_APP_API}product?start=0&end=6`;
     fetch(url)
       .then((Response) => Response.json())
       .then((Response) => {
@@ -208,7 +208,7 @@ export default function Container() {
         <div className="category-hot_content">
           <a href="">
             <img
-              src="https://deer6.vn/wp-content/uploads/2022/05/7.png"
+              src="https://deer6.vn/wp-content/uploads/2023/06/x12.jpg"
               alt=""
             />
           </a>
@@ -216,7 +216,7 @@ export default function Container() {
         <div className="category-hot_content">
           <a href="">
             <img
-              src="https://deer6.vn/wp-content/uploads/2022/05/11.png"
+              src="https://deer6.vn/wp-content/uploads/2023/06/x9.jpg"
               alt=""
             />
           </a>
@@ -224,7 +224,7 @@ export default function Container() {
         <div className="category-hot_content">
           <a href="">
             <img
-              src="https://deer6.vn/wp-content/uploads/2022/05/9.png"
+              src="https://deer6.vn/wp-content/uploads/2023/06/x9.jpg"
               alt=""
             />
           </a>

@@ -1,6 +1,7 @@
 import { useParams,useNavigate } from "react-router-dom";
 import "./ProductDetail.css";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { fomartMoney, MoneytoInt } from "../../util";
 function productDetail() {
   const param = useParams();
   const [data, setData] = useState("");
@@ -20,13 +21,15 @@ function productDetail() {
   });
   const navigator = useNavigate();
 
-  // console.log(data)
+  console.log(data)
   useEffect(() => {
+    console.log("hello")
     let url = `${import.meta.env.VITE_APP_API}product/${param.id}`;
     fetch(url)
       .then((Response) => Response.json())
       .then((Response) => {
-        setData(Response);
+        const [response]=Response;
+        setData(response);
         setDataReciept((pre) => {
           return {
             ...pre,
@@ -39,13 +42,6 @@ function productDetail() {
       window.scrollTo(0,0);
   }, []);
 
-  let fomartMoney = useCallback((x) => {
-    return x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  }, []);
-
-  let MoneytoInt = useCallback((x) => {
-    return parseInt(x.replaceAll(".", ""));
-  }, []);
 
   let handleSize = (e, index) => {
     // setSize(e.target.textContent)
@@ -116,7 +112,7 @@ function productDetail() {
         },
         body: JSON.stringify(dataReceipt),
       };
-      let url = "http://localhost:3000/carts";
+      let url = "http://localhost:3000/api/cart";
       fetch(url, option)
         .then((Response) => {
           Response.json();
@@ -127,7 +123,7 @@ function productDetail() {
         });
     }
   }, [dataReceipt.quantity]);
-  console.log(dataReceipt);
+  // console.log(dataReceipt);
   return (
     <div className="container">
       <div className="container_wrap">
