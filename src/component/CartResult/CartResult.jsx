@@ -27,7 +27,6 @@ export default function CartResult({data,keySerach}) {
         </div>
         <div className='result_container_content'>
             <span className='result_content_title'>{list[0]}<span className='height_light'>{list[1]}</span>{list[2]}</span>
-            , react/prop-types
             <span className='result_content_price'>{fomartMoney(data?.price)} ₫</span>
         </div>
     </div>

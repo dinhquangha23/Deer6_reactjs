@@ -18,14 +18,14 @@ export default function Container() {
       });
   }, []);
   
-  // useEffect(()=>{
-  //   idInterval.current = setInterval(()=>{
-  //     let currentProduct =
-  //     slideReft.current.appendChild(slideReft.current.querySelectorAll(".product")[0])
-  //   },8000)
-  //   console.log("id :"+idInterval.current)
-  //   return ()=>{clearInterval(idInterval.current)}
-  // })
+  useEffect(()=>{
+    idInterval.current = setInterval(()=>{
+      let currentProduct =
+      slideReft.current.appendChild(slideReft.current.querySelectorAll(".product")[0])
+    },8000)
+    console.log("id :"+idInterval.current)
+    return ()=>{clearInterval(idInterval.current)}
+  })
     console.log("goi ben ngoai")
   function handleNext() {
     slideReft.current.prepend(slideReft.current.querySelectorAll(".product")[5])
