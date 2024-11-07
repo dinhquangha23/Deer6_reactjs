@@ -92,6 +92,10 @@ header .content .funtion .funtion-list li span.cart-number{
     color: white;
     font-size: 12px;
 }
+
+header .content .funtion .funtion-list li.menu-bars{
+    display: none;
+}
 header.sticky-fix{
     position: fixed;
     top: 0px;
@@ -105,4 +109,90 @@ header.sticky-fix{
         height: 90px;
     }
     
+}
+
+@media only screen and (max-width: 600px) {
+    header{
+        
+        width: 100%;
+        overflow-x: hidden;
+        
+    }
+
+    header .content{
+        padding: 15px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        
+    }
+    
+    header .content .logo{
+        padding-right: 30px;
+    }
+
+    header .content .logo img{
+        width:  calc(130px/1.5);
+        height: calc(32px/1.5);
+    }
+
+    header .content .menubar{
+        height: 100%;
+        width: 100%;
+        flex: 0.2;
+        
+    }
+    header .content .menubar .main-menu{
+        display: grid;
+        list-style: none;
+        line-height: 60px;
+        font-size: 16px;
+        font-weight: 500;
+        position: absolute;
+        right: 20px;
+        top: 90px;
+        overflow: hidden;
+        height: 0;
+        z-index: 1000;
+        transition: height 0.3s ease-in-out;
+    }
+    header .content .menubar .main-menu.active{
+       
+        height: calc(8*60px);
+    }
+
+    header .content .menubar .main-menu li{
+        background-color: rgb(217 217 217 / 80%);
+        margin-right: 20px;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid black;
+     }
+
+     header .content .menubar .main-menu li:last-child{
+        border-end-end-radius: 12px;
+        border-bottom-left-radius: 12px;
+        border-bottom:none
+     }
+     header .content .menubar .main-menu li:first-child{
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+     }
+    header .content .funtion{
+        flex: 1;
+        height: 100%;
+        
+    }
+
+    header .content .funtion .funtion-list li{
+        width: calc(100%/5);
+        text-align: center;
+        cursor: pointer;
+    }
+
+    header .content .funtion .funtion-list li.menu-bars{
+        display: block;
+    }
+
 }

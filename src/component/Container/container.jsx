@@ -18,14 +18,14 @@ export default function Container() {
       });
   }, []);
   
-  useEffect(()=>{
-    idInterval.current = setInterval(()=>{
-      let currentProduct =
-      slideReft.current.appendChild(slideReft.current.querySelectorAll(".product")[0])
-    },8000)
-    console.log("id :"+idInterval.current)
-    return ()=>{clearInterval(idInterval.current)}
-  })
+  // useEffect(()=>{
+  //   idInterval.current = setInterval(()=>{
+  //     let currentProduct =
+  //     slideReft.current.appendChild(slideReft.current.querySelectorAll(".product")[0])
+  //   },8000)
+  //   console.log("id :"+idInterval.current)
+  //   return ()=>{clearInterval(idInterval.current)}
+  // })
     console.log("goi ben ngoai")
   function handleNext() {
     slideReft.current.prepend(slideReft.current.querySelectorAll(".product")[5])
@@ -42,7 +42,7 @@ export default function Container() {
   return (
   
     <div className="container">
-      {console.log("render-trong dom")}
+      {/* {console.log("render-trong dom")} */}
       <img
         src="https://im.uniqlo.com/global-cms/spa/res29c9020e45b38b1240f5b0c49bd497b3fr.jpg"
         alt=""
