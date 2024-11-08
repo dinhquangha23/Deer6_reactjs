@@ -22,7 +22,7 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
           console.log("data update cart :",data)
           let optionUpdate = {
             method: "PUT",
-            header:{"Content-Type":"application/json"},
+            headers:{"Content-Type":"application/json"},
             body: JSON.stringify(data)
           }
           fetch(url,optionUpdate).then((Response)=>Response.json())
@@ -33,7 +33,7 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
             
           })
     
-          },300)
+          },340)
 
           return ()=>{
            
@@ -86,7 +86,7 @@ function CartItem({cartData, setFlagRerenderWhenUpdateQuantity}) {
     <tr>
         <td> <button className="close"><FontAwesomeIcon icon={faXmark} /></button></td>
         <td><img src={dataCart.thumbnail} alt=""/></td>
-        <td>{`${dataCart.title} - ${dataCart.size}`}</td>
+        <td>{`${dataCart.Title} - ${dataCart.size}`}</td>
         <td>{`${dataCart.price&&fomartMoney(dataCart.price)} ₫`}</td>
         <td>
             <div className="input-quantity">
