@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import CartItem from '../../component/CartItem'
 import {fomartMoney,MoneytoInt} from "../../util"
+import { useNavigate } from 'react-router-dom'
 
 function CartProduct() {
   let [data,setData]=useState([])
@@ -11,23 +12,47 @@ function CartProduct() {
   let [flagRerenderWhenUpdateQuantity,setFlagRerenderWhenUpdateQuantity] = useState(true)
   let calculateEstimate= (array,initValue)=>{
     let result= array.reduce((es,cur)=>{
-      return es + (cur.price *cur.quantity)
+      return es + (MoneytoInt(String(cur.price)) *cur.quantity)
     },initValue)
     return result
   }
+    let navigate = useNavigate()
   useEffect(()=>{
-    let url =`${import.meta.env.VITE_APP_API}carts`
-    fetch(url).then((Response)=>Response.json())
-    .then(Response=>{setData(Response)
+    if(localStorage.getItem("userID")==undefined){
+        console.log("khoong co id user de lay cart nen lay trong localstorage")
+        let dataLocalStorage = JSON.parse(localStorage.getItem("cart"))
+        console.log("datalocal",dataLocalStorage)
+        setData(dataLocalStorage)
+     setEstimate(calculateEstimate(dataLocalStorage,0))
+    }else{
+      let url =`${import.meta.env.VITE_APP_API}get_carts`
+      let optionFetch ={
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({id_user: localStorage.getItem("userID")}),
+      };
+    fetch(url,optionFetch).then((Response)=>Response.json())
+    .then(Response=>{
+      console.log("đinh quang hà",Response)
+      setData(Response)
      setEstimate(calculateEstimate(Response,0))
     })
+    }
+
+
+    
   },[flagRerenderWhenUpdateQuantity])
 
-  useEffect(()=>{
-    // console.log("haha ",data)
-    setEstimate(calculateEstimate(data,0))
+  // useEffect(()=>{
+  //   console.log("haha ",data)
+  //   setEstimate(calculateEstimate(data,0))
 
-  },[flagRerenderWhenUpdateQuantity])
+  // },[flagRerenderWhenUpdateQuantity])
+  const handlePay = ()=>{
+    navigate("/pay")
+  }
 
   return (
     <div className="container">
@@ -46,7 +71,7 @@ function CartProduct() {
           </tr>
           {/* bắt đầu item cart */}
             {data&&data.map((item ,index)=>{
-              return item&&<CartItem key={index} cartData={item} setFlagRerenderWhenUpdateQuantity={setFlagRerenderWhenUpdateQuantity}/>
+              return item &&<CartItem key={item.id} cartData={item} setFlagRerenderWhenUpdateQuantity={setFlagRerenderWhenUpdateQuantity}/>
             })}
               
           {/* kết thúc item cart */}
@@ -60,7 +85,7 @@ function CartProduct() {
               <th>Tạm tính</th>
               <td className="estimate_total_money">
             
-                <span>{data? fomartMoney(estimate) :0 } ₫</span> 
+                <span style={{fontSize: 15}}>{data? fomartMoney(estimate) :0 } ₫</span> 
               </td>
             </tr>
             <tr>
@@ -80,14 +105,13 @@ function CartProduct() {
             <tr>
               <th>Tổng</th>
               <td className="total_money">
-                
-                <span>{data? fomartMoney(estimate+30000): 0}</span> ₫
+                <span style={{fontSize: 15}}>{data? fomartMoney(estimate+30000): 0}</span> ₫
               </td>
             </tr>
           </tbody>
         </table>
         <div className="check_out">
-          <button className="btn_check_out">Tiến hành Thanh toán</button>
+          <button className="btn_check_out" onClick={handlePay}>Tiến hành Thanh toán</button>
         </div>
       </div>
     </div>

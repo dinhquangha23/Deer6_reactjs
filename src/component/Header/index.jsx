@@ -9,6 +9,12 @@ function Header({toggle}) {
     setActive((Pre)=>!Pre)
   }
   const closeMenuBar=()=>{setActive(false)}
+
+  let checkLogin = ()=>{
+        let userId = localStorage.getItem("userID")     
+        if(userId == undefined) return "/login"
+        return "/profiledetail"
+    }
   return (
     <header>
       <div className="content">
@@ -54,9 +60,9 @@ function Header({toggle}) {
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             </li>
             <li>
-              <a href="./profiledetail.html">
+              <Link to={checkLogin()}>
               <FontAwesomeIcon icon={faUser} />
-              </a>
+              </Link>
             </li>
             <li className="heart">
               <a href="./cartproduct.html">

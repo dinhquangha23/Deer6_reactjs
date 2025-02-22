@@ -1,0 +1,53 @@
+.account_manage{
+    /* background-color: blue; */
+    height: 100vh;
+    padding: 10px 5px 20px 5px;
+}
+.account_manage table{
+    background-color: rgba(5, 207, 243, 0.6);
+    
+}
+.account_manage .addRequest{
+    display: flex ;
+    justify-content: end;
+    margin: 20px 20px 20px;
+}
+.account_manage .addRequest Button{
+    margin-right: 50px;
+    background-color: black;
+    
+}
+.account_manage .ant-table-content table tr th{
+    border-bottom: 1px solid black;
+}
+.ant-modal-content{
+    width: 110%;
+}
+.ant-modal-body div input.modal_input_update{
+    width: 100%;
+    font-family: "Bebas Neue", serif;
+}
+.ant-modal-body div span{
+    font-family: "Bebas Neue", serif;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+}
+.ant-modal-body div input.modal_input_update{
+    width: 100%;
+    font-family: "Cabin", serif;
+    font-size: 16px;
+    padding: 5px;
+}
+.ant-modal-body div input[type="number"]::-webkit-inner-spin-button,
+.ant-modal-body div input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    /* margin: 0; */
+}
+.ant-modal-body div input.modal_input_update::placeholder{
+    font-size: 13px;
+    font-weight: lighter;
+}
+.ant-modal-body div.categoryOption{
+    display: flex;
+    flex-direction: column;
+}

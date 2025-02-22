@@ -1,6 +1,7 @@
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams,useNavigate, json } from "react-router-dom";
 import "./ProductDetail.css";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { fomartMoney, MoneytoInt } from "../../util";
 function productDetail() {
   const param = useParams();
@@ -12,7 +13,9 @@ function productDetail() {
   const [quantity, setQuantity] = useState(1);
   const inputQuantityRef = useRef();
   const [dataReceipt, setDataReciept] = useState({
-    title: "",
+    id : "",
+    id_user :"",
+    Title: "",
     color: "while",
     size: "M",
     quantity: 1,
@@ -21,7 +24,7 @@ function productDetail() {
   });
   const navigator = useNavigate();
 
-  console.log(data)
+  // console.log(data)
   useEffect(() => {
     console.log("hello")
     let url = `${import.meta.env.VITE_APP_API}product/${param.id}`;
@@ -30,17 +33,20 @@ function productDetail() {
       .then((Response) => {
         const [response]=Response;
         setData(response);
+        console.log("data luc dau",response)
         setDataReciept((pre) => {
           return {
             ...pre,
-            title: Response.Title,
-            thumbnail: Response.firstimage,
-            price: MoneytoInt(Response.price),
+            id_product: param.id,
+            Title: response.Title,
+            thumbnail: response.secondimage,
+            price: fomartMoney(response.price),
           };
         });
       });
       window.scrollTo(0,0);
-  }, []);
+  }, [param.id]);
+
 
 
   let handleSize = (e, index) => {
@@ -103,17 +109,57 @@ function productDetail() {
     });
   };
 
-  let handelAddCart = useCallback(() => {
+  let handelAddCart = () => {
     if (dataReceipt.quantity != 0) {
-      let option = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(dataReceipt),
-      };
-      let url = "http://localhost:3000/api/cart";
-      fetch(url, option)
+      
+      let url = "http://localhost:3000/api/carts";
+      let flagUpdate=false;
+      let flagMap = true;
+      if(localStorage.getItem("userID")==undefined){
+        const dataLocal = JSON.parse(localStorage.getItem("cart"))
+        if(dataLocal==undefined || dataLocal.length==0){
+          dataReceipt["id_local"]= uuidv4();
+          localStorage.setItem("cart",JSON.stringify([dataReceipt]))}
+        else{
+          dataLocal.map((value)=>{
+            if(value.id_product == dataReceipt.id_product && value.color === dataReceipt.color && value.size === dataReceipt.size){
+              value.quantity+= dataReceipt.quantity
+              localStorage.setItem("cart",JSON.stringify(dataLocal))
+              flagMap=false
+            }else{
+              flagUpdate=true
+            }
+          })
+          if(flagUpdate&&flagMap){
+            flagUpdate=false
+            flagMap=true
+            console.log("data_recept_in_local", dataReceipt)
+            dataReceipt["id_local"]= uuidv4();
+            dataLocal.push(dataReceipt)
+          localStorage.setItem("cart",JSON.stringify(dataLocal))
+          }
+          
+
+        }
+        
+        // console.log("localstorage co :",JSON.parse(dataLocal))
+      }else{
+        
+        setDataReciept((pre) => {
+          return {
+            ...pre,
+            id_user: localStorage.getItem("userID")
+          };
+        });
+        dataReceipt.id_user=localStorage.getItem("userID");
+        let option = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataReceipt),
+        };
+        fetch(url, option)
         .then((Response) => {
           Response.json();
         })
@@ -121,8 +167,14 @@ function productDetail() {
         //  navigator('/all_products')
 
         });
+      }
+      
+      
     }
-  }, [dataReceipt.quantity]);
+  };
+
+
+  useEffect(()=>{console.log("dữ liệu data recipt",dataReceipt)})
   // console.log(dataReceipt);
   return (
     <div className="container">

@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cabin:ital,wght@0,400..700;1,400..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.DashBoard{
+    /* background-color: blue; */
+    width: 100vw;
+    display: flex;
+}
+.Left_Navbar {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 256px;
+}
+.Left_Navbar .header_left_nav{
+    /* background-color: blue; */
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+
+.Left_Navbar span{
+    font-size: 14px;
+}
+.Left_Navbar .ant-menu-item span svg{
+    font-size: 16px;
+}
+
+.Left_Navbar .header_left_nav span{
+ font-size: 28px;
+ font-family: "Bebas Neue", serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 3px;
+}
+.Left_Navbar .header_left_nav img{
+    width: 139px;
+    margin-top: 10px;
+}
+
+.DashBoard .dashboard_container {
+    background-color: rgba(1, 224, 247, 0.2);
+    flex: 1;
+    margin: 20px 40px 10px 10px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+

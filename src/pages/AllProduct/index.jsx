@@ -3,6 +3,8 @@ import Product from "../../component/Product/product";
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function AllProduct() {
   const [products, setProducts] = useState([]);
@@ -19,7 +21,7 @@ export default function AllProduct() {
     <div className="container">
       <div className="redirect">
         <Link to={"/"}><span>Trang chủ</span></Link>
-        <i className="fa-solid fa-angle-right" />
+        <i><FontAwesomeIcon icon={faAngleRight} /></i>
         <Link to={"/all_products"} >
           <span>Tất cả sản phẩm</span>
         </Link>
