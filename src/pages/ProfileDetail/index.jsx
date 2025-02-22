@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import "./profileDetail.css"
+import "./ProfileDetail.css"
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
